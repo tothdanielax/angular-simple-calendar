@@ -1,0 +1,22 @@
+<div class='flex items-center h-fit justify-between p-2 border border-black'>
+	<span class='font-medium'>{{ event.title }}</span>
+
+	<div>
+		<span *ngIf='remainingTime > 0 else expired;'>
+        	{{ remainingTime | remainingTimeStr }}
+    	</span>
+
+		<ng-template #expired>
+			<span class='text-red-600'>
+				Expired
+			</span>
+		</ng-template>
+
+		<button (click)='removeEvent()'
+				class='h-1/2'
+				color='warn'
+				mat-raised-button>Törlés
+		</button>
+	</div>
+
+</div>

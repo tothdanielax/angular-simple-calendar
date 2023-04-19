@@ -1,0 +1,10 @@
+<div class='bg-gray-200 w-1/2 p-3'>
+	<h2 class='underline'>Event list</h2>
+
+	<div class='bg-gray-100'>
+		<ng-container *ngFor='let event of events'>
+			<app-event-list-item [event]='event'></app-event-list-item>
+		</ng-container>
+	</div>
+
+</div>

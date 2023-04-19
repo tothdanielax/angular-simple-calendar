@@ -1,0 +1,46 @@
+<form (ngSubmit)='handleFormSubmit()'
+	  [formGroup]='createEventForm'
+	  class='flex flex-row space-x-3'>
+
+	<mat-form-field appearance='fill'
+					class='p-0 m-0'>
+		<mat-label>Új esemény</mat-label>
+		<input formControlName='newEvent'
+			   id='newEvent'
+			   matInput
+			   placeholder='Esemény neve'
+			   type='text'
+		/>
+
+		<mat-error *ngIf="createEventForm.get('newEvent')?.hasError('required')">
+			Adj meg egy esemény nevet.
+		</mat-error>
+
+		<mat-error *ngIf="createEventForm.get('newEvent')?.hasError('minlength')">
+			Az esemény neve legalább 2 karakter hosszú legyen.
+		</mat-error>
+
+		<mat-error *ngIf="createEventForm.get('newEvent')?.hasError('maxlength')">
+			Az esemény neve legfeljebb 50 karakter hosszú legyen.
+		</mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance='fill'>
+		<mat-label>Esemény dátuma</mat-label>
+		<input formControlName='newEventDate'
+			   id='newEventDate'
+			   matInput
+			   type='datetime-local'
+		/>
+
+		<mat-error *ngIf="createEventForm.get('newEventDate')?.hasError('required')">
+			Adj meg egy dátumot.
+		</mat-error>
+	</mat-form-field>
+
+	<button class='justify-self-center self-center center'
+			color='primary'
+			mat-raised-button>
+		Létrehozás
+	</button>
+</form>
